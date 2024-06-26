@@ -16,7 +16,7 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image
-        run: docker build -t ankit1030/cicdfrontend .
+        run: docker build -t ankit1030/cicdfrontend . 
       - name: Push image to Docker Hub
         run: docker push ankit1030/cicdfrontend:latest  
 
