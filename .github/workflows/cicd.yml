@@ -1,0 +1,32 @@
+name : Deploy Frontend 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      # - name: Create .env file
+      #   run: echo "MONGO_ATLAS=${{ secrets.MONGO_ATLAS }}>.env"
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker image
+        run: docker build -t ankit1030/cicdfrontend .
+      - name: Push image to Docker Hub
+        run: docker push ankit1030/cicdfrontend:latest  
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps: 
+      - name: Pull image from Docker Hub
+        run: docker pull ankit1030/cicdfrontend:latest
+      - name: Delete Old Container
+        run: docker rm -f angularFrontend || true
+      - name: Run docker Container
+        run: docker run -d --init -p 4200:4200 --name angularFrontend ankit1030/cicdfrontend

@@ -1,5 +1,5 @@
 {
-  "name": "phase03",
+  "name": "EberPanel",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -29,7 +29,7 @@
     "@googlemaps/js-api-loader": "^1.16.6",
     "@stripe/stripe-js": "^3.4.1",
     "@types/google.maps": "^3.55.10",
-    "@types/googlemaps": "^3.43.3",
+  
     "bn-ng-idle": "^2.0.5",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

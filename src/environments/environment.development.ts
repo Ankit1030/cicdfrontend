@@ -1,11 +1,11 @@
 // <<<<<<< HEAD
 // const port = 3000;
-// const port = 5000;
+const port = 5000;
 // const serverip = '3.110.142.239'
-const port = 3000;
+// const port = 3000;
 // const port = 8081;
 // const serverip1 = "13.233.19.123"
-const serverip = "localhost";
+const serverip = "13.232.248.7"; //myself server 26-06
 // export const env  = {
 //     port : port,
 //     backendUrl:`/api`,

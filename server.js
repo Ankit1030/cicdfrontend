@@ -4,13 +4,12 @@ const app = express();
 const port = 4200;
 
 // Serve static files from the 'dist' directory
-app.use(express.static(path.join(__dirname, 'dist')));
-
+// app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/browser')));
 // Route for serving the Angular app
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/browser/index.html'));
 });
-
 
 // Start the server
 app.listen(port, () => {

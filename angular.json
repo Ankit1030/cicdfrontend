@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Phase03": {
+    "EberPanel": {
       "projectType": "application",
       "schematics": {},
       "root": "",

@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { env } from '../../../../environments/environment.development';
+import { Loader } from '@googlemaps/js-api-loader';
+
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -120,20 +122,44 @@ export class RideHistoryComponent {
   }
 
   ngAfterViewInit() {
-    navigator.geolocation.getCurrentPosition((location) => {
-      let result = location.coords;
-      // console.log(result);
-      const place = { lat: result.latitude, lng: result.longitude };
-      // this.place = place
-      this.map = new google.maps.Map(
-        document.getElementById('map') as HTMLElement,
-        {
-          zoom: 10,
-          center: { lat: result.latitude, lng: result.longitude },
-        }
-      );
-      this.geocoder = new google.maps.Geocoder();
-    });
+    const place = { lat: 28.644800, lng: 77.216721 };
+
+      const loader = new Loader({
+        apiKey: 'AIzaSyDOgtoT8p1B4OkbPdlIly-LWJBtLNN4lZI',
+        libraries: ['places', 'drawing']
+      });
+
+      loader.load().then(() => {
+        const mapEle = document.getElementById('map') as HTMLElement;
+        if (mapEle) {
+          // Use user's current location as the center
+          this.map = new google.maps.Map(mapEle, {
+            center: place,
+            zoom: 5,
+            styles: []
+          });
+      // this.map = new google.maps.Map(
+      //   document.getElementById('map') as HTMLElement,
+      //   {
+      //     zoom: 5,
+      //     center: place,
+      //   }
+      // );
+    }})
+    // navigator.geolocation.getCurrentPosition((location) => {
+    //   let result = location.coords;
+    //   // console.log(result);
+    //   const place = { lat: result.latitude, lng: result.longitude };
+    //   // this.place = place
+    //   this.map = new google.maps.Map(
+    //     document.getElementById('map') as HTMLElement,
+    //     {
+    //       zoom: 10,
+    //       center: { lat: result.latitude, lng: result.longitude },
+    //     }
+    //   );
+    //   this.geocoder = new google.maps.Geocoder();
+    // });
   }
 
   ngOnInit(): void {
