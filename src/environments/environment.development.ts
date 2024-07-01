@@ -5,7 +5,7 @@ const port = 5000;
 // const port = 3000;
 // const port = 8081;
 // const serverip1 = "13.233.19.123"
-const serverip = "13.232.248.7"; //myself server 26-06
+const serverip = "13.233.143.250"; //myself server 26-06
 // export const env  = {
 //     port : port,
 //     backendUrl:`/api`,
